@@ -27,8 +27,8 @@ if(!empty($cls)) {
 	$output .= 'class="'.$cls.'"';
 }
 if(!empty($link) && $link != false) {
-	$output .= 'href="'. $url .'">'. (empty($title)?$anchor:$title) .'</a>';
+	$output .= 'href="'. $url .'">'. (empty($title)?ucfirst($anchor):ucfirst($title)) .'</a>';
 } else { 
-	$output .= '></a>';
+	$output .= '>'. (empty($title)?ucfirst($anchor):ucfirst($title)) .'</a>';
 }
 return $output;
