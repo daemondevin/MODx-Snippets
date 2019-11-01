@@ -19,9 +19,9 @@
  * @link    https://github.com/daemondevin/MODx-Snippets
  * @version 1.0
  */
-$mod      = (boolean) $modx->getOption('mod',$scriptProperties,true);
+$mod      = (boolean) $modx->getOption('mod',$scriptProperties,'true');
 $js       = (string)  $modx->getOption('js',$scriptProperties,null);
-$startup  = (boolean) $modx->getOption('startup',$scriptProperties,false);
+$startup  = (boolean) $modx->getOption('startup',$scriptProperties,'false');
 
 $output = $mod === 'true' ? $input : $js;
 
