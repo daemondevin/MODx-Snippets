@@ -1,6 +1,6 @@
 <?php
 /**
- * ThemanticInjectJS.
+ * InjectJS.
  *
  * Register JS to be injected inside the HEAD tag or just
  * before the closing BODY tag of a resource. Can be used
