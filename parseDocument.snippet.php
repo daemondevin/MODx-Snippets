@@ -8,7 +8,7 @@
  * &file     string   The file to parse for MODx tags.
  * &type     string   Choose between css, js, or html.
  * &startup  boolean  If true, injects the output just 
- *                    after the closing HEAD tag
+ *                    before the closing HEAD tag
  *
  * @author  daemon.devin <daemon.devin@gmail.com>
  * @link    https://github.com/daemondevin/MODx-Snippets
