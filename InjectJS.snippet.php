@@ -10,6 +10,7 @@
  *
  * &mod       boolean   If false, will run as a snippet call.
  * &js        string    The JS to inject into the resource.
+ * &script    boolean   If false, injects code instead of a file
  * &startup   boolean   If true, injects the JS between the
  *                      HEAD tags, default is false which will
  *                      insert the JS just before the closing
@@ -22,9 +23,14 @@
 $mod      = (boolean) $modx->getOption('mod',$scriptProperties,'true');
 $js       = (string)  $modx->getOption('js',$scriptProperties,null);
 $startup  = (boolean) $modx->getOption('startup',$scriptProperties,'false');
+$script   = (boolean) $modx->getOption('script',$scriptProperties,'true');
 
 $output = $mod === 'true' ? $input : $js;
 
-$startup === 'true' ? $modx->regClientStartupScript($output) : $modx->regClientScript($output);
+if ($script) {
+  $startup === 'true' ? $modx->regClientStartupScript($output) : $modx->regClientScript($output);
+} else {
+  $startup === 'true' ? $modx->regClientStartupHTMLBlock("<script>\n$output\n</script>") : $modx->regClientHTMLBlock("<script>\n$output\n</script>");
+}
 
 return;
