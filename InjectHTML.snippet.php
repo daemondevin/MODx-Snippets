@@ -20,16 +20,16 @@
  * @version 1.0
  */
 $mod      = (boolean) $modx->getOption('mod',$scriptProperties,true);
-$html     = $modx->getOption('html',$scriptProperties,null);
+$html     = (string)  $modx->getOption('html',$scriptProperties,null);
 $startup  = (boolean) $modx->getOption('startup',$scriptProperties,false);
 
-
 $output = $mod === 'true' ? htmlentities($input) : htmlentities($html);
+
+$output = html_entity_decode($output);
 
 if ($startup === false) {
   $modx->regClientHTMLBlock("\n$output\n");
 } else {
   $modx->regClientStartupHTMLBlock("\n$output\n");
 }
-
 return;
