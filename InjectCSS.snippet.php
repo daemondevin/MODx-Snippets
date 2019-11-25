@@ -25,7 +25,7 @@ $output = $mod === true ? $input : $css;
 if (!is_null($media)) {
   $modx->regClientCSS($output, $media);
 } else {
-  $modx->regClientCSS($output, $media);
+  $modx->regClientCSS($output);
 }
 
 return;
