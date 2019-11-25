@@ -1,4 +1,4 @@
-<?php
+<?php 
 /**
  * InjectJS.
  *
@@ -20,17 +20,25 @@
  * @link    https://github.com/daemondevin/MODx-Snippets
  * @version 1.0
  */
-$mod      = (boolean) $modx->getOption('mod',$scriptProperties,'true');
+$mod      = (boolean) $modx->getOption('mod',$scriptProperties,true);
 $js       = (string)  $modx->getOption('js',$scriptProperties,null);
-$startup  = (boolean) $modx->getOption('startup',$scriptProperties,'false');
-$script   = (boolean) $modx->getOption('script',$scriptProperties,'true');
+$startup  = (boolean) $modx->getOption('startup',$scriptProperties,false);
+$script   = (boolean) $modx->getOption('script',$scriptProperties,true);
 
-$output = $mod === 'true' ? $input : $js;
+$output = $mod === true ? $input : $js;
 
-if ($script) {
-  $startup === 'true' ? $modx->regClientStartupScript($output) : $modx->regClientScript($output);
+if ($script == false) { 
+  if ($startup == true) {
+    $modx->regClientStartupScript("<script>\n$output\n</script>", true);
+  } else {
+    $modx->regClientScript("<script>\n$output\n</script>", true);
+  }
 } else {
-  $startup === 'true' ? $modx->regClientStartupHTMLBlock("<script>\n$output\n</script>") : $modx->regClientHTMLBlock("<script>\n$output\n</script>");
+  if ($startup == true) {
+    $modx->regClientStartupScript($output);
+  } else {
+    $modx->regClientScript($output);
+  }
 }
 
 return;
