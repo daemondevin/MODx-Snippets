@@ -3,17 +3,18 @@
  * tagIterator
  *
  * Takes a HTML tag and returns it's markup however many times given
- * by the first passed parameter. This modifier expects 4 parameters
+ * by the first passed parameter. This modifier expects 5 parameters
  * which are as follows:
  *
  * &iterate     integer     How many times the markup needs to be
  * &tag         string      The HTML tag
  * &class       string      The CSS class selector for the HTML tag
  * &inner       string      The innerHTML to use between the tags
+ * &ctag        boolean     Does this tag element have a closing tag (i.e. </tag>)
  *
  * @author  daemon.devin <daemon.devin@gmail.com>
  * @link    PortableAppz.x10.mx/
- * @version 1.0
+ * @version 1.1
  */
 
 $output = '';
